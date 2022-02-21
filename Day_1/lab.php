@@ -28,8 +28,8 @@ if (isset($_POST["submit"])) {
     }
 
     //message validation
-    if (isset($_POST["message"]) && !empty($_POST["message"])) {
-        if (strlen($_POST["message"] < MESSAGE_LENGTH)) {
+    if (isset($_POST["message"])) {
+        if (strlen($_POST["message"]) < MESSAGE_LENGTH) {
             $error_message[] = "** ERROR: message is small < 255 characters";
         } else if (empty($_POST["message"])) {
             $error_message[] = '** ERROR: message is required';
