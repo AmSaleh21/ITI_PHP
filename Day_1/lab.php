@@ -2,9 +2,18 @@
 require_once 'config.php';
 $error_message = array();
 $success = false;
-
+$vars = [
+    'name' => '',
+    'email' => '',
+    'message' => ''
+];
 
 if (isset($_POST["submit"])) {
+    
+    $vars['name'] = $_POST['name'];
+    $vars['email'] = $_POST['email'];
+    $vars['message'] =  $_POST['message'];
+
     //name validation
     if (!empty($_POST["name"])) {
         if (!isset($_POST["name"]) || strlen($_POST["name"]) > USER_NAME) {
@@ -67,6 +76,12 @@ function get_data($data)
             echo "<hr />";
             echo "<h2>Thank you For Contacting Us";
             echo "<hr />";
+            foreach ($vars as $key => $value) {
+                echo "<div>";
+                echo "<span>$key&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+                echo "<span>$value</span>";
+                echo "</div>";
+            }
             exit();
         }
         ?>
