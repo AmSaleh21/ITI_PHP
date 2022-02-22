@@ -8,6 +8,19 @@ $vars = [
     'message' => ''
 ];
 
+//Counter to check how many times the user opened the page
+session_start();
+
+if (!isset($_SESSION["is_visited"])) {
+    echo "First Visit, Hello!";
+    $_SESSION["is_visited"] = true;
+} else {
+    $_SESSION["counter"] = isset($_SESSION["counter"]) ? $_SESSION["counter"] + 1 : 2;
+    echo "you visited this page " . $_SESSION["counter"] . " times";
+}
+
+
+//check and validate the data after submission
 if (isset($_POST["submit"])) {
 
     $vars['name'] = $_POST['name'];
@@ -77,7 +90,7 @@ function get_data($data)
             $fp = fopen("data.txt", "a+");
             $date = date('m/d/Y h:i:s a', time());
             fwrite($fp, "$date");
-            fwrite($fp, ", ".$_SERVER['REMOTE_ADDR']);
+            fwrite($fp, ", " . $_SERVER['REMOTE_ADDR']);
 
             foreach ($vars as $key => $value) {
                 if ($key !== "message") {
@@ -85,7 +98,7 @@ function get_data($data)
                     fwrite($fp, $line);
                 }
             }
-            
+
             fwrite($fp, PHP_EOL);
             fclose($fp);
 
