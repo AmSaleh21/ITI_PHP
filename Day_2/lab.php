@@ -12,11 +12,11 @@ $vars = [
 session_start();
 
 if (!isset($_SESSION["is_visited"])) {
-    echo "First Visit, Hello!";
+    echo "<center>First Visit, Hello!</center>";
     $_SESSION["is_visited"] = true;
 } else {
     $_SESSION["counter"] = isset($_SESSION["counter"]) ? $_SESSION["counter"] + 1 : 2;
-    echo "you visited this page " . $_SESSION["counter"] . " times";
+    echo "<center> you visited this page " . $_SESSION["counter"] . " times </center>";
 }
 
 
@@ -78,11 +78,10 @@ function get_data($data)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>contact form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h3> Contact Form </h3>
-
     <div id="after_submit">
         <?php
         if ($success) {
@@ -111,35 +110,27 @@ function get_data($data)
         ?>
     </div>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <?php
-        if (count($error_message) > 0) {
-            echo "<ul>";
-            foreach ($error_message as $error) {
-                echo "<li class='error'> $error </li>";
-            }
-            echo "</ul>";
-        }
-        ?>
 
-        <div class="row">
-            <label class="required" for="name">Your name:</label><br />
-            <input id="name" class="input" name="name" type="text" value="<?php echo get_data("name"); ?>" size="30" /><br />
-
+        <div class="container">
+            <input class="input-fields" placeholder="Enter your email" name="email" value="<?php echo get_data("email"); ?>">
+            <input class="input-fields" placeholder="Enter your name" class="input" name="name" type="text" value="<?php echo get_data("name"); ?>" size="30" /><br />
+            <textarea class="input-fields" id="message" class="input" name="message" rows="7" cols="30" value="<?php echo get_data("message"); ?>"></textarea><br />
+            <div class="buttons-div flex">
+                <input class="buttons" id="submit" name="submit" type="submit" value="Send email" />
+                <input class="buttons" id="clear" name="clear" type="reset" value="clear form" />
+            </div>
+            <div id="error-messages">
+                <?php
+                if (count($error_message) > 0) {
+                    echo "<ul>";
+                    foreach ($error_message as $error) {
+                        echo "<li class='error'> $error </li>";
+                    }
+                    echo "</ul>";
+                }
+                ?>
+            </div>
         </div>
-        <div class="row">
-            <label class="required" for="email">Your email:</label><br />
-            <input id="email" class="input" name="email" type="text" value="<?php echo get_data("email"); ?>" size="30" /><br />
-
-        </div>
-        <div class="row">
-            <label class="required" for="message">Your message:</label><br />
-            <textarea id="message" class="input" name="message" rows="7" cols="30" value="<?php echo get_data("message"); ?>"></textarea><br />
-
-        </div>
-
-        <input id="submit" name="submit" type="submit" value="Send email" />
-        <input id="clear" name="clear" type="reset" value="clear form" />
-
 
     </form>
 
