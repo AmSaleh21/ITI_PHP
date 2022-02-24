@@ -10,13 +10,13 @@ $vars = [
 
 //Counter to check how many times the user opened the page
 session_start();
-
+$visit_time = 0;
 if (!isset($_SESSION["is_visited"])) {
-    echo "<center>First Visit, Hello!</center>";
+    $visit_time = 0;
     $_SESSION["is_visited"] = true;
 } else {
     $_SESSION["counter"] = isset($_SESSION["counter"]) ? $_SESSION["counter"] + 1 : 2;
-    echo "<center> you visited this page " . $_SESSION["counter"] . " times </center>";
+    $visit_time = $_SESSION["counter"];
 }
 
 
@@ -100,7 +100,6 @@ function get_data($data)
 
             fwrite($fp, PHP_EOL);
             fclose($fp);
-
             echo "<hr />";
             echo "<h2>Thank you For Contacting Us";
             echo "<hr />";
@@ -112,6 +111,15 @@ function get_data($data)
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
         <div class="container">
+            <p><?php 
+                // echo "<center>First Visit, Hello!</center>";
+                // echo "<center> you visited this page " . $_SESSION["counter"] . " times </center>";
+                if($visit_time == 0){
+                    echo "<center>First Visit, Hello!</center>";
+                }else{
+                    echo "<center> you visited this page " . $visit_time . " times </center>";
+                }
+            ?></p>
             <input class="input-fields" placeholder="Enter your email" name="email" value="<?php echo get_data("email"); ?>">
             <input class="input-fields" placeholder="Enter your name" class="input" name="name" type="text" value="<?php echo get_data("name"); ?>" size="30" /><br />
             <textarea class="input-fields" id="message" class="input" name="message" rows="7" cols="30" value="<?php echo get_data("message"); ?>"></textarea><br />
