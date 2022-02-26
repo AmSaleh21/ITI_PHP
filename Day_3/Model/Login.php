@@ -30,7 +30,7 @@ class Login
 
     static function Remember($entered_username)
     {
-        setcookie("remeber_me", "123456789abcdefghijklmnopqrst123456789jsjcnsavnsdnkamal", 0);
+        setcookie("remeber_me", correct_token, 0);
         if (!empty($_POST["rememberme"])) {
             setcookie("member_login", $entered_username, time() + (10 * 365 * 24 * 60 * 60));
         } else {
