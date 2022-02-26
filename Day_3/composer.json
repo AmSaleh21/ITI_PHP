@@ -1,0 +1,13 @@
+{
+  "name": "day3/day3",
+  "description": "Day3",
+  "license": "MIT",
+  "autoload": {
+    "classmap": [
+      "Model"
+    ],
+    "files": [
+      "config.php"
+    ]
+  }
+}

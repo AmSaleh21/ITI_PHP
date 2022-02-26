@@ -1,0 +1,51 @@
+.container {
+    width: 400px;
+    height: relative;
+    margin: 35px auto;
+    font-family: 'Raleway';
+    position: relative;
+    top: 50%;
+    transform: translate(10%, 10%);
+    background-color: #fff;
+    border: 2px grey solid;
+    border-radius: 10px;
+}
+
+/* name, email and message share the same style*/
+.input-fields {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+/*sumbit and clear share the same styling*/
+.buttons {
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 25px;
+}
+
+#submit {
+    background-color: #04AA6D;
+
+}
+
+#cancel-button {
+    background-color: #8304aa;
+}
+
+.buttons:hover {
+    opacity: 0.6;
+}
+
+.pad{
+    padding-left: 15px;
+}
