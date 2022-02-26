@@ -1,10 +1,3 @@
-<!--
-    Lab 3 
-    Author: Mahmoud Mohamed Kamal
-    Date:   26-02-2022
-    File:   Login.php
--->
-
 <?php
 
 class Login
