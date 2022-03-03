@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "classmap": ["Model"],
+        "files": ["config.php"]
+    },
+    "require": {
+        "illuminate/database": "^8.83"
+    }
+}
