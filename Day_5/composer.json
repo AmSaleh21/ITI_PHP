@@ -1,0 +1,12 @@
+{
+    "name": "day4/day4",
+    "description": "Day 4 lab sql",
+    "license": "MIT",
+    "autoload": {
+        "classmap": ["Model"],
+        "files": ["config.php"]
+    },
+    "require": {
+        "illuminate/database": "^8.83"
+    }
+}
