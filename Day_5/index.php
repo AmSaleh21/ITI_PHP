@@ -41,5 +41,3 @@ if (!isset($_GET["id"])) {
     $item = Capsule::table("items")->find((int)$_GET["id"]);
     require_once("views/item.php");
 }
-
-echo "<button name='search'>search</button>";
